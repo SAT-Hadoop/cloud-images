@@ -23,7 +23,7 @@ sudo sed -i "$ a *.* @192.168.250.250:514" /etc/rsyslog.conf
 
 #Modify write Riemann plugin
 #Modify write Riemann plugin
-sudo sed -i '/Host \"riemanna.\example\.com\"/c\Host \"64.131.111.117\"' /etc/collectd.d/write_riemman.conf
+sudo sed -i '/Host \"riemanna.\example\.com\"/c\    Host \"64.131.111.117\"' /etc/collectd.d/write_riemann.conf
 
 sudo update-rc.d collectd defaults
 sudo service collectd start
