@@ -13,7 +13,7 @@
   "http_port_min" : 9001,
   "http_port_max" : 9001,
   "shutdown_command": "echo password | sudo -S sh /tmp/shutdown",
-  "vm_name": "ubuntu-trusty-base",
+  "vm_name": "ubuntu-server-small",
   "disk_interface": "virtio",
   "qemu_binary": "../utils/fake-qemu",
   "headless": true,
