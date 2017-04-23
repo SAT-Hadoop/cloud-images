@@ -1,8 +1,12 @@
 #!/bin/bash
 yum update -y
 yum install -y epel-release
-yum install -y cloud-init
+yum install -y cloud-init denyhosts
 passwd -l root
+
+# Config denyhosts
+sudo service denyhosts start
+sudo chkconfig denyhosts on
 
 ### Configure cloud-init for root
 sed -i 's/disable_root:.*/disable_root: 0/g' /etc/cloud/cloud.cfg
