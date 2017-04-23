@@ -1,0 +1,32 @@
+{
+  "builders": [
+  {
+  "type": "qemu",
+  "format": "raw",
+  "iso_url": "http://bay.uchicago.edu/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+  "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+  "iso_checksum_type": "sha256",
+  "ssh_username": "root",
+  "ssh_password": "password",
+  "disk_size": "90000",
+  "http_directory" : ".",
+  "http_port_min" : 9001,
+  "http_port_max" : 9001,
+  "shutdown_command": "shutdown -P now",
+  "vm_name": "centos-7-base",
+  "disk_interface": "virtio",
+  "qemu_binary": "../utils/fake-qemu",
+  "headless": true,
+  "accelerator": "kvm",
+  "qemuargs": [[ "-m", "2048m" ],
+               ["-machine", "type=pc,accel=kvm"],
+               ["-device", "virtio-net-pci,netdev=user.0"]],
+  "boot_command" : ["<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7.ks<enter><wait>"]  
+  }
+  ],
+  "provisioners": [
+  {
+    "type": "shell",
+    "script": "post_install.sh"
+  }]
+}
