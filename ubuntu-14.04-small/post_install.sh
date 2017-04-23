@@ -8,7 +8,7 @@ echo password | sudo -S add-apt-repository -y ppa:adiscon/v8-stable
 echo password | sudo -S add-apt-repository ppa:collectd/collectd-5.5
 
 echo password | sudo -S apt-get update
-echo password | sudo -S sudo apt-get install -y rsyslog collectd 
+echo password | sudo -S apt-get install -y rsyslog collectd 
 
 #Copying the provided and configured collectd.d default plugins to be loaded
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
