@@ -25,20 +25,8 @@ sudo cp /tmp/code/collectd/hostb/collectd.conf /etc/
 sudo sed -i "$ a *.* @192.168.250.250:514" /etc/rsyslog.conf
 
 #Modify write Riemann plugin
-sudo cat << EOT >> /etc/collectd.d/write_riemman.conf
-LoadPlugin write_riemann
-<Plugin "write_riemann">
-    <Node "riemanna">
-        Host "192.168.250.251"
-        Port "5555"
-        Protocol TCP
-        StoreRates false
-        CheckThresholds true
-        TTLFactor 30.0
-    </Node>
-    Tag "collectd"
-</Plugin>
-EOT
+#Modify write Riemann plugin
+sudo sed -i '/Host \"riemanna.\example\.com\"/c\Host \"64.131.111.117\"' /etc/collectd.d/write_riemman.conf
 
 
 sudo systemctl enable collectd

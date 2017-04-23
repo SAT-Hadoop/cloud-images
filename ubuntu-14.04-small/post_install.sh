@@ -25,20 +25,8 @@ sudo service collectd start
 sudo sed -i "$ a *.* @192.168.250.250:514" /etc/rsyslog.conf
 
 #Modify write Riemann plugin
-sudo cat << EOT >> /etc/collectd.d/write_riemman.conf
-LoadPlugin write_riemann
-<Plugin "write_riemann">
-    <Node "riemanna">
-        Host "192.168.250.251"
-        Port "5555"
-        Protocol TCP
-        StoreRates false
-        CheckThresholds true
-        TTLFactor 30.0
-    </Node>
-    Tag "collectd"
-</Plugin>
-EOT
+sudo sed -i '/Host \"riemanna.\example\.com\"/c\Host \"64.131.111.117\"' /etc/collectd.d/write_riemman.conf
+
 
 # Finish modifying for the cloud by stripping the username password via -l
 echo "passwd -l vagrant" > /tmp/shutdown
