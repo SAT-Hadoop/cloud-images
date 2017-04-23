@@ -18,7 +18,8 @@ sudo apt-get -y install collectd stress
 sudo cp ./collectd.conf /etc/collectd/
 
 #Copying the provided and configured collectd.d default plugins to be loaded
-sudo cp -r ./collectd.d /etc/
+git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
+sudo cp -r /tmp/code/collectd/hosta/collectd.d /etc/
 
 sudo update-rc.d collectd defaults
 sudo service collectd start
