@@ -17,6 +17,7 @@
   "disk_interface": "virtio",
   "qemu_binary": "../utils/fake-qemu",
   "headless": true,
+  "ssh_wait_timeout": "30m",
   "accelerator": "kvm",
   "qemuargs": [[ "-m", "2048m" ],
                ["-machine", "type=pc,accel=kvm"],
