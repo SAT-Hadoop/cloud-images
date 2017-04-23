@@ -11,6 +11,9 @@ echo password | sudo -S apt-get update
 echo password | sudo -S apt-get install -y rsyslog collectd 
 
 #Copying the provided and configured collectd.d default plugins to be loaded
+if [ -d /tmp/code ]; then
+  rm -rf /tmp/code
+fi
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
 sudo cp -r /tmp/code/collectd/hosta/collectd.d /etc/
 
@@ -23,7 +26,7 @@ sudo sed -i "$ a *.* @192.168.250.250:514" /etc/rsyslog.conf
 
 #Modify write Riemann plugin
 #Modify write Riemann plugin
-sudo sed -i '/Host \"riemanna.\example\.com\"/c\    Host \"64.131.111.117\"' /etc/collectd.d/write_riemann.conf
+sudo sed -i '/Host \"riemanna.\example\.com\"/c\        Host \"64.131.111.117\"' /etc/collectd.d/write_riemann.conf
 
 sudo update-rc.d collectd defaults
 sudo service collectd start
