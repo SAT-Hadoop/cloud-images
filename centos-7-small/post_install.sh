@@ -15,10 +15,10 @@ sudo yum install collectd protobuf-c collectd-write_riemann rsyslog
 
 #Copying the provided and configured collectd.d default plugins to be loaded
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
-sudo cp -r /tmp/code/itmo453-553/collectd/hostb/collectd.d /etc/
+sudo cp -r /tmp/code/collectd/hostb/collectd.d /etc/
 
 #copy the provided collectd.conf file overwritting the default collectd.conf
-sudo cp /tmp/code/itmo453-553/collectd/hostb/collectd.conf /etc/
+sudo cp /tmp/code/collectd/hostb/collectd.conf /etc/
 
 # Config rsyslog
 # Again assuming that the IP here is the private cloud IP of the Central Rsyslog server
