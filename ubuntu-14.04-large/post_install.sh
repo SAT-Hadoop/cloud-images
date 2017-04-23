@@ -14,12 +14,13 @@ sudo sudo add-apt-repository ppa:collectd/collectd-5.5
 sudo apt-get update
 sudo apt-get -y install collectd 
 
-#copy the provided collectd.conf file overwritting the default collectd.conf
-sudo cp ./collectd.conf /etc/collectd/
-
 #Copying the provided and configured collectd.d default plugins to be loaded
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
 sudo cp -r /tmp/code/itmo453-553/collectd/hosta/collectd.d /etc/
+
+#copy the provided collectd.conf file overwritting the default collectd.conf
+sudo cp /tmp/code/itmo453-553/collectd/hosta/collectd.conf /etc/collectd/
+
 
 sudo update-rc.d collectd defaults
 sudo service collectd start
