@@ -10,7 +10,8 @@ sudo chkconfig denyhosts on
 
 # installation of collectd
 
-sudo yum install collectd protobuf-c collectd-write_riemann rsyslog
+sudo yum install http://mirror.ghettoforge.org/distributions/gf/gf-plus-latest.gf.el6.noarch.rpm
+sudo yum --enablerepo=gf-plus install collectd-write_riemann
 
 #Copying the provided and configured collectd.d default plugins to be loaded
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
