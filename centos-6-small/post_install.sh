@@ -8,9 +8,13 @@ passwd -l root
 sudo service denyhosts start
 sudo chkconfig denyhosts on
 
-# installation of collectd
+# Install rsyslog
+wget http://rpms.adiscon.com/v8-stable/rsyslog.repo
+sudo cp rsyslog.repo /etc/yum.repos.d/
+sudo yum install -y rsyslog
 
-sudo yum install http://mirror.ghettoforge.org/distributions/gf/gf-plus-latest.gf.el6.noarch.rpm
+# installation of collectd
+sudo yum install http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el6.noarch.rpm
 sudo yum --enablerepo=gf-plus install collectd-write_riemann
 
 #Copying the provided and configured collectd.d default plugins to be loaded
