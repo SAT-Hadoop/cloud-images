@@ -12,7 +12,6 @@ sudo chkconfig denyhosts on
 
 sudo yum install collectd protobuf-c collectd-write_riemann rsyslog
 
-
 #Copying the provided and configured collectd.d default plugins to be loaded
 git clone https://github.com/illinoistech-itm/itmo453-553 /tmp/code
 sudo cp -r /tmp/code/collectd/hostb/collectd.d /etc/
@@ -25,13 +24,10 @@ sudo cp /tmp/code/collectd/hostb/collectd.conf /etc/
 sudo sed -i "$ a *.* @192.168.250.250:514" /etc/rsyslog.conf
 
 #Modify write Riemann plugin
-#Modify write Riemann plugin
-sudo sed -i '/Host \"riemanna.\example\.com\"/c\Host \"64.131.111.117\"' /etc/collectd.d/write_riemman.conf
+sudo sed -i '/Host \"riemanna.\example\.com\"/c\        Host \"64.131.111.117\"' /etc/collectd.d/write_riemann.conf
 
-
-sudo systemctl enable collectd
+sudo chkconfig collectd on
 sudo service collectd start
-
 
 ### Configure cloud-init for root
 sed -i 's/disable_root:.*/disable_root: 0/g' /etc/cloud/cloud.cfg
